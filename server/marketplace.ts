@@ -11,7 +11,7 @@ const db = new Sequelize(parsedDoc.db.name, parsedDoc.db.username, parsedDoc.db.
     port: parsedDoc.db.postgres ? parsedDoc.postgres.port : null,
     dialect: parsedDoc.db.postgres ? "postgres" : "sqlite",
     logging: parsedDoc.server.server.logging,
-    storage: "database.sqlite" //this is sqlite only
+    storage: process.env.DB_PATH || "/app/data/database/database.sqlite" //this is sqlite only
 });
 
 type CatalogType = "theme" | "plugin-page" | "plugin-sw";

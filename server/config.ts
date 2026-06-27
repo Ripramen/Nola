@@ -1,5 +1,4 @@
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import chalk from "chalk";
 import { TomlPrimitive, parse } from "smol-toml";
 
@@ -44,7 +43,7 @@ interface Verify {
     verifyExtras?: () => boolean | Error;
 }
 
-let doc = readFileSync(fileURLToPath(new URL("../config.toml", import.meta.url))).toString();
+let doc = readFileSync(process.env.CONFIG_PATH || "/app/data/config.toml").toString();
 const parsedDoc = parse(doc) as unknown as TomlData;
 
 function verify(t: Verify[]) {
