@@ -13,7 +13,6 @@ RUN npm i -g pnpm
 RUN pnpm install
 RUN pnpm run build
 RUN export TERM=xterm-256color
-VOLUME /app
 EXPOSE 8080
 ENTRYPOINT ["pnpm"]
 CMD ["start", "--color"]
